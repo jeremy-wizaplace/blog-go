@@ -1,2 +1,40 @@
-# blog-go
+# Blog GoLang
+
 Repo du blog en GoLang
+
+## Prérequis
+
+- [GO Hugo](https://gohugo.io/getting-started/quick-start/)
+
+## Installation de zéro
+
+[RTFM](https://gohugo.io/getting-started/quick-start/) ou alors :
+
+```bash
+hugo new site ./ --force
+git init
+git submodule add https://github.com/Zenithar/hugo-theme-bleak.git themes/bleak
+"public/" >> .gitignore
+```
+
+## Installation pour écrire
+
+```bash
+git clone https://github.com/jeremy-wizaplace/blog-go.git
+git submodule init
+git submodule update
+```
+
+## Ecire du contenu
+
+```bash
+hugo new posts/my-post.md
+```
+
+## Lancer le serveur en dev
+
+```bash
+hugo server -D
+```
+
+Le `-D` permet de dire de compiler les posts en draft.
