@@ -14,7 +14,8 @@ Repo du blog en GoLang
 hugo new site ./ --force
 git init
 git submodule add https://github.com/Zenithar/hugo-theme-bleak.git themes/bleak
-"public/" >> .gitignore
+echo "public/" >> .gitignore
+echo 'theme = "bleak"' >> config.toml
 ```
 
 ## Installation pour écrire
