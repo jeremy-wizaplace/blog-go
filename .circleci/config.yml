@@ -1,0 +1,74 @@
+version: 2.1
+
+commands:
+    checkout-alpine:
+        description: Install alpine requirements for checkout
+        steps:
+              - run:
+                  name: "Install alpine requirements for checkout"
+                  command: |
+                      apk add git openssh-client curl make;
+                      git submodule init;
+                      git submodule update;
+              - checkout
+
+    hugo-install:
+        description: Install Hugo for compile blog
+        steps:
+            - run:
+                  name: "Download Hugo"
+                  command: |
+                      if [ ! -f /usr/local/bin/hugo ];then
+                          curl -L https://github.com/gohugoio/hugo/releases/download/v0.61.0/hugo_0.61.0_linux-64bit.tar.gz | tar -xz;
+                          mv hugo /usr/local/bin/hugo;
+                      fi
+
+    restore-hugo-install-cache:
+        description: "Restore Hugo install"
+        steps:
+            - restore_cache:
+                key: hugo-install-v0.1
+
+    store-hugo-install-cache:
+        description: "Store Hugo install in CircleCI cache"
+        steps:
+            - checkout-alpine
+            - restore-hugo-install-cache
+            - hugo-install
+            - save_cache:
+                  key: hugo-install-v0.1
+                  paths:
+                      - /usr/local/bin
+            - persist_to_workspace:
+                  root: /
+                  paths:
+                      - usr/local/bin
+
+    hugo-compile:
+        description: Compile & deploy blog
+        steps:
+            - run:
+                  name: "Compile & deploy blog"
+                  command: ./deploy.sh
+
+executors:
+    hugo:
+        docker:
+            - image: alpine:latest
+        working_directory: ~/repository
+
+jobs:
+    hugo:
+        executor: hugo
+        steps:
+            - store-hugo-install-cache
+            - hugo-compile
+
+workflows:
+    version: 2.1
+    Code quality:
+        jobs:
+            - hugo:
+                  filters:
+                      branches:
+                          only: master
