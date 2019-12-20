@@ -4,13 +4,15 @@ commands:
     checkout-alpine:
         description: Install alpine requirements for checkout
         steps:
-              - run:
+            - run:
                   name: "Install alpine requirements for checkout"
+                  command: apk add git openssh-client curl make
+            - checkout
+            - run:
+                  name: "Init submodules"
                   command: |
-                      apk add git openssh-client curl make;
                       git submodule init;
                       git submodule update;
-              - checkout
 
     hugo-install:
         description: Install Hugo for compile blog
@@ -66,7 +68,7 @@ jobs:
 
 workflows:
     version: 2.1
-    Code quality:
+    Compile & deploy:
         jobs:
             - hugo:
                   filters:
