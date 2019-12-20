@@ -51,7 +51,7 @@ commands:
         steps:
             - add_ssh_keys:
                   fingerprints:
-                      - "59:8a:83:79:57:c4:02:f9:dd:db:ad:18:30:f6:b8:b0"
+                      - "63:6a:e7:cc:de:0f:d4:f7:5f:c0:c4:4c:34:69:01:b7"
             - run:
                   name: "Compile & deploy blog"
                   command: ./deploy.sh
