@@ -5,8 +5,8 @@ set -e
 
 printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
 
-git config user.email "jeremy.reynaud@wizacha.com"
-git config user.name "Jérémy Reynaud"
+git config --global user.email "jeremy.reynaud@wizacha.com"
+git config --global user.name "Jérémy Reynaud"
 
 # Add destination repository
 git submodule add -b master -f git@github.com:jeremy-wizaplace/jeremy-wizaplace.github.io.git public
