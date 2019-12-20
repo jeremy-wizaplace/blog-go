@@ -51,10 +51,7 @@ commands:
         steps:
             - run:
                   name: "Compile & deploy blog"
-                  command: |
-                      cd ~/repository;
-                      pwd;
-                      ls -lah
+                  command: ./deploy.sh
 
 executors:
     hugo:
