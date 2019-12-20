@@ -6,7 +6,7 @@ set -e
 printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
 
 # Add destination repository
-git submodule add -b master git@github.com:jeremy-wizaplace/jeremy-wizaplace.github.io.git public
+git submodule add -b master -f git@github.com:jeremy-wizaplace/jeremy-wizaplace.github.io.git public
 
 # Build the project.
 hugo -t bleak
