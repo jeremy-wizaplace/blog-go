@@ -53,7 +53,8 @@ commands:
                   name: "Compile & deploy blog"
                   command: |
                       cd ~/repository;
-                      ./deploy.sh
+                      pwd;
+                      ls -lah
 
 executors:
     hugo:
