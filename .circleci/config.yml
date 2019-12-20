@@ -21,7 +21,7 @@ commands:
                   name: "Download Hugo"
                   command: |
                       if [ ! -f /usr/local/bin/hugo ];then
-                          curl -L https://github.com/gohugoio/hugo/releases/download/v0.61.0/hugo_0.61.0_linux-64bit.tar.gz | tar -xz;
+                          curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-64bit.tar.gz | tar -xz;
                           mv hugo /usr/local/bin/hugo;
                       fi
 
@@ -29,7 +29,7 @@ commands:
         description: "Restore Hugo install"
         steps:
             - restore_cache:
-                key: hugo-install-v0.1
+                key: hugo-install-v${HUGO_VERSION}
 
     store-hugo-install-cache:
         description: "Store Hugo install in CircleCI cache"
