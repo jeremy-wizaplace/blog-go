@@ -39,3 +39,7 @@ hugo server -D
 ```
 
 Le `-D` permet de dire de compiler les posts en draft.
+
+## Déploiement
+
+Le déploiement est entièrement automatisé grâce à CircleCI
