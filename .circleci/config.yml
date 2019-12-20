@@ -51,7 +51,9 @@ commands:
         steps:
             - run:
                   name: "Compile & deploy blog"
-                  command: ./deploy.sh
+                  command: |
+                      cd ~/repository;
+                      ./deploy.sh
 
 executors:
     hugo:
