@@ -26,7 +26,7 @@ git submodule init
 git submodule update
 ```
 
-## Ecire du contenu
+## Ecrire du contenu
 
 ```bash
 hugo new posts/my-post.md
@@ -38,7 +38,7 @@ hugo new posts/my-post.md
 hugo server -D
 ```
 
-Le `-D` permet de dire de compiler les posts en draft.
+Le `-D` permet de compiler les posts en draft.
 
 ## Déploiement
 
